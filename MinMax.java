@@ -2,24 +2,21 @@ public class MinMax {
     public static void main(String[] args) {
         System.out.println("Welcome to Min-Max program.");
 
-        // testing UC3 for TC1 - TC3
-        System.out.println(getMaxString("str", "str-str", "str-str-str"));
-        System.out.println(getMaxString("str-str-str", "str-str", "str"));
-        System.out.println(getMaxString("str", "str-str-str", "str-str"));
+        // checking UC4 for different data types
+        System.out.println(getMax(8, 5, 4));
+        System.out.println(getMax(5.3, 6.9, 7.1));
+        System.out.println(getMax("str", "str-str-str", "str-str"));
     }
 
-    // UC1: method compare 3 integers
-    public static int getMaxInt(int a, int b, int c) {
-        return a > (b > c ? b : c) ? a : (b > c ? b : c);
-    }
-
-    // UC2: method to compare 3 double
-    public static double getMaxDouble(double a, double b, double c) {
-        return a > (b > c ? b : c) ? a : (b > c ? b : c);
-    }
-
-    // UC3: method to compare 3 Strings
-    public static String getMaxString(String a, String b, String c) {
-        return a.length() > (b.length() > c.length() ? b.length() : c.length()) ? a : (b.length() > c.length() ? b : c);
+    // UC4: method to compare 3 objects using generics
+    public static <T extends Comparable<T>> T getMax(T a, T b, T c) {
+        T max = a;
+        if (b.compareTo(max) > 0) {
+            max = b;
+        }
+        if (c.compareTo(max) > 0) {
+            max = c;
+        }
+        return max;
     }
 }
